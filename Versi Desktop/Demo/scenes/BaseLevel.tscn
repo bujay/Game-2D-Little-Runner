@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://resource/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/GameCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Flag.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/BaseLevel.gd" type="Script" id=5]
+[ext_resource path="res://scenes/UI/LevelUI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/UI/LevelComplete.tscn" type="PackedScene" id=7]
+[ext_resource path="res://resource/decorative_tileset.tres" type="TileSet" id=8]
+[ext_resource path="res://scenes/Clouds.tscn" type="PackedScene" id=9]
+
+[node name="BaseLevel" type="Node" groups=["base_level"]]
+script = ExtResource( 5 )
+levelCompleteScene = ExtResource( 7 )
+
+[node name="LevelUI" parent="." instance=ExtResource( 6 )]
+
+[node name="GameCamera" parent="." instance=ExtResource( 3 )]
+
+[node name="Clouds" parent="GameCamera" instance=ExtResource( 9 )]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 18, 18 )
+format = 1
+
+[node name="DecorativeTitleMap" type="TileMap" parent="."]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 18, 18 )
+format = 1
+
+[node name="ForegroundTileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 18, 18 )
+format = 1
+
+[node name="Flag" parent="." instance=ExtResource( 4 )]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Collectibles" type="Node2D" parent="."]
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="PlayerRoot" type="Node2D" parent="."]
+
+[node name="Player" parent="PlayerRoot" instance=ExtResource( 2 )]
